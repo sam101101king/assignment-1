@@ -1,0 +1,40 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+df = pd.read_csv(r"C:\Users\user\Desktop\assignment.csv")
+df.dtypes
+df
+df["Date"]=pd.to_datetime(df.Date)
+df.dtypes
+df['year'] = df['Date'].dt.year
+df['month'] = df['Date'].dt.month
+df['day'] = df['Date'].dt.day
+out_data = df.to_csv('results.csv')
+means=df["Close"].mean()
+median=df["Close"].median()
+diff=df["Close"].diff()
+per=df["Close"].pct_change()
+print(means)
+print(median)
+print(diff)
+print(per)
+plt.plot(df.Mean)
+plt.legend(['Mean'])
+plt.ylabel('Change in closing price')
+plt.xlabel('Date')
+plt.title('change in mean')
+plt.plot(df.Median)
+plt.legend(['Median'])
+plt.ylabel('Change in closing price')
+plt.xlabel('Date')
+plt.title('change in median')
+plt.plot(df.Difference)
+plt.legend(['Differenece'])
+plt.ylabel('Change in closing price')
+plt.xlabel('Date')
+plt.title('change in difference')
+plt.plot(df.Per_change)
+plt.legend(['percentage change'])
+plt.ylabel('Change in closing price')
+plt.xlabel('Date')
+plt.title('change in percentage')
